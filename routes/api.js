@@ -85,7 +85,7 @@ module.exports = function (app) {
         const db = req.app.get('db');
         const { data, error } = await db
           .from(DB_TABLE)
-          .update({ ...payload, updated_on: new Date().toUTCString })
+          .update({ ...payload, updated_on: new Date() })
           .match({ _id, project });
 
         if (error) return res.send({ error: 'could not update', _id: _id });
